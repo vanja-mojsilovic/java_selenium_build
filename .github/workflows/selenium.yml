@@ -1,0 +1,49 @@
+name: Run Selenium Login Test
+
+on:
+  schedule:
+    - cron: '45 10 * * *'  
+  workflow_dispatch:
+
+jobs:
+  login-test:
+    runs-on: ubuntu-latest
+
+    env:
+      VANJA_EMAIL: ${{ secrets.VANJA_EMAIL }}
+      VANJA_GOOGLE_PASSWORD: ${{ secrets.VANJA_GOOGLE_PASSWORD }}
+      VANJA_GOOGLE_SECRET_KEY: ${{ secrets.VANJA_GOOGLE_SECRET_KEY }}
+      H_PASSWORD_VANJA: ${{ secrets.H_PASSWORD_VANJA }}
+      H_SECRET_KEY_VANJA: ${{ secrets.H_SECRET_KEY_VANJA }}
+      DISPLAY: :99  # Required for Xvfb
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Print UTC time
+      run: |
+        echo "Current UTC time:"
+        date -u
+
+
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Install Chrome and Xvfb
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget unzip xvfb libxi6
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
+
+    - name: Start virtual display
+      run: |
+        Xvfb :99 -screen 0 1920x1080x24 &
+
+    - name: Run Selenium test
+      run: |
+        mvn clean compile exec:java -Dexec.mainClass=cta.tests.LoginTest

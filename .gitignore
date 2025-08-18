@@ -1,0 +1,15 @@
+# Maven
+target/
+*.log
+
+# IDEs
+.idea/
+*.iml
+
+# OS
+.DS_Store
+
+# Selenium
+chromedriver.log
+
+.env
