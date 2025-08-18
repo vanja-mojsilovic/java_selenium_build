@@ -1,7 +1,6 @@
 package cta.tests;
 
 import cta.pages.*;
-//import cta.tests.*;
 
 public class LoginTest extends BaseTest {
     public static void main(String[] args) {
