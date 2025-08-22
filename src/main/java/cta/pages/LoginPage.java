@@ -51,6 +51,15 @@ public class LoginPage extends BasePage {
     @FindBy(xpath ="//input[@id = 'app_totp' and @name='app_otp']")
 	WebElement githubIssueAuthenticatiorSixDigitsCodeLocator;
 
+    @FindBy(xpath = "//button[contains(@id,'google-auth-button')]")
+	WebElement signInGoogleInJiraLocator;
+
+    @FindBy(xpath ="//input[@id='totpPin']")
+	List<WebElement> googleAuthenticatorCodeInJiraLocator;
+
+    @FindBy(xpath ="//div[@data-email='vanja.mojsilovic@spothopperapp.com']")
+	WebElement chooseVanjaAccountLocator;
+
 
 
     // Constructor
@@ -61,6 +70,32 @@ public class LoginPage extends BasePage {
     }
 
     // Methods
+    public void jiraSignIn(WebDriver driver,String googleSecretKey){
+        clickSignInGoogle();
+    	clickGoogleAccunt();
+        System.out.println("GoogleAccunt clicked!");
+    	List<WebElement> elements = waitForVisibilityOfElements(driver,googleAuthenticatorCodeInJiraLocator, 15);
+    	if(elements.size()>0) {
+    		Totp totp = new Totp(googleSecretKey);
+    	    String verificationCodeFromPopupOrJson = totp.now();
+            enterGoogleAuthenticatorCode(verificationCodeFromPopupOrJson);
+            System.out.println("GoogleAuthenticatorCode entered!");
+            clickGoogleAuthenticatorCodeNextButton();
+            System.out.println("GoogleAuthenticatorCodeNextButton clicked!");
+    	}
+    }
+
+    public void clickSignInGoogle() {
+		WebElement element = waitForVisibilityOfElement(driver,signInGoogleInJiraLocator, 15);
+		element.click();
+	}
+
+    public void clickGoogleAccunt() {
+		WebElement element = waitForVisibilityOfElement(driver,chooseVanjaAccountLocator, 15);
+		element.click();
+	}
+
+
     public void githubVerificationWithAuth(WebDriver driver,String emailGoogle,String githubPassword,String githubSecretKey){
         WebElement emailElement = waitForVisibilityOfElement(driver, githubIssueUserNameLocator, 3);
 		emailElement.clear();
@@ -94,7 +129,6 @@ public class LoginPage extends BasePage {
     public void googleLogin(String emailGoogle,String passwordGoogle,String googleSecretKey){
         enterEmailGoogle(emailGoogle);
         clickNextEmailGoogle();
-
         enterPasswordGoogle(passwordGoogle);
         clickNextPasswordGoogle();
         enterGoogleAuthenticatorCode(googleSecretKey);

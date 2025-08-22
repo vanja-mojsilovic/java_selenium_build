@@ -22,6 +22,7 @@ public class VariablesPage extends BasePage{
     public String googleLoginPage = "https://accounts.google.com/";
     public String spothopperappPage = "https://www.spothopperapp.com/admin/spots/";
     public String githubIssueUrl = "https://github.com/SpotHopperLLC/content/issues/";
+    public String jiraUrl = "https://spothopper.atlassian.net/";
 
     // Constructor
     public VariablesPage(WebDriver driver) {

@@ -39,7 +39,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
-          <mainClass>cta.tests.LoginTest</mainClass>
+          <mainClass>cta.tests.BuildTest</mainClass>
         </configuration>
       </plugin>
     </plugins>

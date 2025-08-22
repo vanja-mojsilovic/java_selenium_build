@@ -3,14 +3,10 @@ package cta.tests;
 import cta.pages.*;
 
 public class LoginTest extends BaseTest {
-    public static void main(String[] args) {
-        LoginTest test = new LoginTest();
-        test.runTest();
-    }
+    
 
     public void runTest() {
-        setUp();
-
+        
         LoginPage loginPage = new LoginPage(driver);
         VariablesPage variablesPage = new VariablesPage(driver);
 
@@ -31,7 +27,12 @@ public class LoginTest extends BaseTest {
         loginPage.githubVerificationWithAuth(driver,variablesPage.emailGoogle,variablesPage.githubPassword,variablesPage.githubSecretKey);
         sleep(3000);
 
-        tearDown();
-        System.exit(0);
+        navigate(variablesPage.jiraUrl);
+        sleep(3000);
+
+        loginPage.jiraSignIn(driver,variablesPage.googleSecretKey);
+        sleep(8000);
+
+        
     }
 }
