@@ -8,6 +8,7 @@ public class BuildTest extends BaseTest{
 
         
         LoginTest loginTest = new LoginTest();
+        loginTest.driver = test.driver; 
         loginTest.runTest();
 
         test.tearDown();
