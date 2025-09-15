@@ -6,7 +6,8 @@ import build.pages.*;
 public class BuildTest extends BaseTest{
     public static void main(String[] args) throws IOException {
         BuildTest test = new BuildTest();
-
+        BuildPage buildPage = new BuildPage(null);
+        VariablesPage variablesPage=new VariablesPage(driver);
         boolean isCi = System.getenv("CI") != null;
         String email = VariablesPage.get("VANJA_EMAIL");
         String apiToken = VariablesPage.get("JIRA_API_KEY");
@@ -20,7 +21,6 @@ public class BuildTest extends BaseTest{
             System.err.println(" ERROR: JIRA_API_KEY environment variable is not set or is empty!");
             System.exit(1);
         }
-        BuildPage buildPage = new BuildPage(null);
         try {
             buildPage.testMyself(email, apiToken);
             System.out.println(" Authentication successful! Proceeding with task execution...");
@@ -30,8 +30,10 @@ public class BuildTest extends BaseTest{
             System.exit(1);
         }
 
-        //TaskTest taskTest = new TaskTest();
-        //taskTest.searchTasks();
+        String jql = "labels NOT IN (WordPress,LocationLanding,LocationPicker,LandingBuild) "+
+                "AND issuetype in (Epic, LandingAG, Redesign) AND status = QA AND assignee not in (membersOF(QA))";
+        String result = buildPage.getKeyIssuesByApiPost(driver,jql,variablesPage.emailGoogle,variablesPage.jiraApiKey);
+        System.out.println(result);
         System.exit(0);
     }
 }

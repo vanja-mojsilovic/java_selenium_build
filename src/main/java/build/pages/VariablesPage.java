@@ -10,6 +10,21 @@ public class VariablesPage extends AbstractClass{
             .ignoreIfMissing()
             .load();
 
+    // Constructor
+    public VariablesPage(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+
+        // Load values using get() method
+        this.emailGoogle = get("VANJA_EMAIL");
+        this.jiraApiKey = get("JIRA_API_KEY");
+        this.passwordGoogle = get("VANJA_GOOGLE_PASSWORD");
+        this.googleSecretKey = get("VANJA_GOOGLE_SECRET_KEY");
+        this.githubPassword = get("H_PASSWORD_VANJA");
+        this.githubSecretKey = get("H_SECRET_KEY_VANJA");
+    }
+
     // Variables
     public String emailGoogle;
     public String jiraApiKey;
@@ -25,20 +40,7 @@ public class VariablesPage extends AbstractClass{
     public String jiraUrl = "https://spothopper.atlassian.net";
     public String jiraFilterPageUrl = jiraUrl + "/issues/";
 
-    // Constructor
-    public VariablesPage(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
 
-        // Load values using get() method
-        this.emailGoogle = get("VANJA_EMAIL");
-        this.jiraApiKey = get("JIRA_API_KEY");
-        this.passwordGoogle = get("VANJA_GOOGLE_PASSWORD");
-        this.googleSecretKey = get("VANJA_GOOGLE_SECRET_KEY");
-        this.githubPassword = get("H_PASSWORD_VANJA");
-        this.githubSecretKey = get("H_SECRET_KEY_VANJA");
-    }
 
     // Get value from environment or .env file
     public static String get(String key) {

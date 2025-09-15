@@ -68,7 +68,7 @@ public class BuildPage extends AbstractClass{
         return result;
     }
 
-    public String getKeyIssuesByApiPost(String jql, String email, String apiToken) throws IOException {
+    public String getKeyIssuesByApiPost(WebDriver driver,String jql, String email, String apiToken) throws IOException {
         String apiUrl = "https://spothopper.atlassian.net/rest/api/3/search";
 
         String credentials = email + ":" + apiToken;
