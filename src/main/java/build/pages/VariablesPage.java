@@ -23,7 +23,7 @@ public class VariablesPage extends AbstractClass{
     public String spothopperappPage = "https://www.spothopperapp.com/admin/spots/";
     public String githubIssueUrl = "https://github.com/SpotHopperLLC/content/issues/";
     public String jiraUrl = "https://spothopper.atlassian.net";
-    public String jiraFilterPageUrl = jiraUrl + "/issues/"; // Avoids using filter=-2
+    public String jiraFilterPageUrl = jiraUrl + "/issues/";
 
     // Constructor
     public VariablesPage(WebDriver driver) {

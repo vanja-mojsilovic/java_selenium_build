@@ -69,7 +69,7 @@ public class BuildPage extends AbstractClass{
     }
 
     public String getKeyIssuesByApiPost(String jql, String email, String apiToken) throws IOException {
-        String apiUrl = "https://spothopper.atlassian.net/rest/api/3/search"; // ✅ Fixed: Removed trailing spaces
+        String apiUrl = "https://spothopper.atlassian.net/rest/api/3/search";
 
         String credentials = email + ":" + apiToken;
         String encodedCreds = Base64.getEncoder().encodeToString(credentials.getBytes(StandardCharsets.UTF_8));

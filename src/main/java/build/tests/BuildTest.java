@@ -23,14 +23,15 @@ public class BuildTest extends BaseTest{
         BuildPage buildPage = new BuildPage(null);
         try {
             buildPage.testMyself(email, apiToken);
+            System.out.println(" Authentication successful! Proceeding with task execution...");
         } catch (IOException e) {
             System.err.println("Authentication test failed. Check credentials above.");
             e.printStackTrace();
             System.exit(1);
         }
-        System.out.println(" Authentication successful! Proceeding with task execution...");
-        TaskTest taskTest = new TaskTest();
-        taskTest.searchTasks();
+
+        //TaskTest taskTest = new TaskTest();
+        //taskTest.searchTasks();
         System.exit(0);
     }
 }
