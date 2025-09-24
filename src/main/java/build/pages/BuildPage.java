@@ -51,7 +51,9 @@ public class BuildPage extends AbstractClass{
     }
 
     // Methods
-    public void fetchSpotSampleLinks(String email, String apiToken) throws Exception {
+    public JSONObject fetchSpotSampleLinks(String email, String apiToken) throws Exception {
+        JSONObject result = new JSONObject();
+
         String apiUrl = "https://spothopper.atlassian.net/rest/api/3/search/jql";
         String jqlPayload = """
        {
@@ -93,6 +95,7 @@ public class BuildPage extends AbstractClass{
         JSONArray issues = json.getJSONArray("issues");
 
         for (int i = 0; i < issues.length(); i++) {
+            List<String> testSiteUrls = new ArrayList<>();
             JSONObject issue = issues.getJSONObject(i);
             String key = issue.getString("key");
             String spotId = issue.getJSONObject("fields").optString("customfield_10053", "null");
@@ -119,7 +122,9 @@ public class BuildPage extends AbstractClass{
                                         JSONObject attrs = part.optJSONObject("attrs");
                                         if (attrs != null) {
                                             String url = attrs.optString("url", "");
+                                            url = trimAndRemoveForwardSlash(url);
                                             if (url.contains("spot-sample")) {
+                                                testSiteUrls.add(url);
                                                 System.out.println("spot-sample link: " + url);
                                             }
                                         }
@@ -135,7 +140,9 @@ public class BuildPage extends AbstractClass{
                                                     JSONObject attrs = mark.optJSONObject("attrs");
                                                     if (attrs != null) {
                                                         String href = attrs.optString("href", "");
+                                                        href = trimAndRemoveForwardSlash(href);
                                                         if (href.contains("spot-sample")) {
+                                                            testSiteUrls.add(href);
                                                             System.out.println("spot-sample link: " + href);
                                                         }
                                                     }
@@ -149,10 +156,14 @@ public class BuildPage extends AbstractClass{
                     }
                 }
             }
-
-
-
+            String firstUrl = testSiteUrls.isEmpty() ? "null" : testSiteUrls.get(0);
+            JSONObject entry = new JSONObject();
+            entry.put("issue_key", key);
+            entry.put("spot_id", spotId);
+            entry.put("test_site_url", firstUrl);
+            result.put(key, entry);
         }
+        return result;
     }
 
 }

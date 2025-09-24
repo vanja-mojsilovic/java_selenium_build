@@ -99,4 +99,16 @@ public class AbstractClass {
 
         return visibleElements;
     }
+
+    public String trimAndRemoveForwardSlash(String text) {
+        if (text == null || text.isEmpty()) {
+            return "";
+        }
+        String result = text.trim();
+        if (result.endsWith("/")) {
+            result = result.substring(0, result.length() - 1);
+        }
+        return result;
+    }
+
 }

@@ -3,6 +3,7 @@ package build.tests;
 import java.io.IOException;
 import build.pages.BuildPage;
 import build.pages.VariablesPage;
+import com.google.gson.JsonObject;
 import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.ArrayList;
@@ -40,7 +41,14 @@ public class BuildTest extends BaseTest{
 
 
         String jql = "labels NOT IN (WordPress,LocationLanding,LocationPicker,LandingBuild) AND issuetype in (Epic, LandingAG, Redesign) AND status = QA AND assignee not in (membersOF(QA))";
-        buildPage.fetchSpotSampleLinks(email, apiToken);
+        JSONObject  tasks = buildPage.fetchSpotSampleLinks(email, apiToken);
+        for (String taskKey : tasks.keySet()) {
+            JSONObject task = tasks.getJSONObject(taskKey);
+            String key = task.getString("issue_key");
+            String spotId = task.getString("spot_id");
+            String testSiteUrl = task.getString("test_site_url");
+            System.out.println(key + " " + spotId + " " + testSiteUrl);
+        }
 
 
         System.exit(0);
