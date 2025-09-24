@@ -113,6 +113,8 @@ public class BuildPage extends AbstractClass{
                             if (parts != null) {
                                 for (int p = 0; p < parts.length(); p++) {
                                     JSONObject part = parts.getJSONObject(p);
+
+                                    // 🔹 Case 1: inlineCard with URL
                                     if ("inlineCard".equals(part.optString("type"))) {
                                         JSONObject attrs = part.optJSONObject("attrs");
                                         if (attrs != null) {
@@ -122,12 +124,32 @@ public class BuildPage extends AbstractClass{
                                             }
                                         }
                                     }
+
+                                    // 🔹 Case 2: text block with link mark
+                                    if ("text".equals(part.optString("type"))) {
+                                        JSONArray marks = part.optJSONArray("marks");
+                                        if (marks != null) {
+                                            for (int m = 0; m < marks.length(); m++) {
+                                                JSONObject mark = marks.getJSONObject(m);
+                                                if ("link".equals(mark.optString("type"))) {
+                                                    JSONObject attrs = mark.optJSONObject("attrs");
+                                                    if (attrs != null) {
+                                                        String href = attrs.optString("href", "");
+                                                        if (href.contains("spot-sample")) {
+                                                            System.out.println("spot-sample link: " + href);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+
 
 
         }

@@ -12,9 +12,7 @@ jobs:
     env:
       JIRA_API_KEY: ${{ secrets.JIRA_API_KEY }}
       VANJA_EMAIL: ${{ secrets.VANJA_EMAIL }}
-      VANJA_GOOGLE_PASSWORD: ${{ secrets.VANJA_GOOGLE_PASSWORD }}
       VANJA_GOOGLE_SECRET_KEY: ${{ secrets.VANJA_GOOGLE_SECRET_KEY }}
-      H_PASSWORD_VANJA: ${{ secrets.H_PASSWORD_VANJA }}
       H_SECRET_KEY_VANJA: ${{ secrets.H_SECRET_KEY_VANJA }}
       DISPLAY: :99  # Required for Xvfb
 
