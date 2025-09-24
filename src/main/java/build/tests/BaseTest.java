@@ -21,13 +21,12 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
 
-        if (System.getenv("CI") != null) {
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--window-size=1920,1080");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--headless=new"); // Enable modern headless
-        }
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--headless=new");
+
 
         driver = new ChromeDriver(options);
         if (System.getenv("CI") == null) {
