@@ -48,6 +48,7 @@ public class BuildTest extends BaseTest{
             String spotId = task.getString("spot_id");
             String testSiteUrl = task.getString("test_site_url");
             System.out.println(key + " " + spotId + " " + testSiteUrl);
+
         }
 
 

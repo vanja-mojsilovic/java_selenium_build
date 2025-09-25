@@ -34,15 +34,7 @@ import org.json.JSONObject;
 
 public class BuildPage extends AbstractClass{
 
-    // Locators
-    @FindBy(xpath = "//tr[contains(@data-testid,'native-issue-table.ui.issue-row')]/td[2]//a")
-    private List<WebElement> issueKeyLocator;
 
-    @FindBy(xpath = "//div[@data-testid='jql-editor-input']")
-    private WebElement jqlEditorLocator;
-
-    @FindBy(xpath = "//button[@data-testid='jql-editor-search']")
-    private WebElement jqlEditorSearchButtonLocator;
 
     // Constructor
     public BuildPage(WebDriver driver) {
