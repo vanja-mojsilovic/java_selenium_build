@@ -91,8 +91,8 @@ public class BuildPage extends AbstractClass{
             JSONObject issue = issues.getJSONObject(i);
             String key = issue.getString("key");
             String spotId = issue.getJSONObject("fields").optString("customfield_10053", "null");
-            System.out.println("Issue: " + key);
-            System.out.println("Spot ID: " + spotId);
+            //System.out.println("Issue: " + key);
+            //System.out.println("Spot ID: " + spotId);
 
             JSONArray comments = issue.getJSONObject("fields")
                     .optJSONObject("comment")
@@ -117,7 +117,7 @@ public class BuildPage extends AbstractClass{
                                             url = trimAndRemoveForwardSlash(url);
                                             if (url.contains("spot-sample")) {
                                                 testSiteUrls.add(url);
-                                                System.out.println("spot-sample link: " + url);
+                                                //System.out.println("spot-sample link: " + url);
                                             }
                                         }
                                     }
