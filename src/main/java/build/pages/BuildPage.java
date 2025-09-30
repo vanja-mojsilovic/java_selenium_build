@@ -135,7 +135,7 @@ public class BuildPage extends AbstractClass{
                                                         href = trimAndRemoveForwardSlash(href);
                                                         if (href.contains("spot-sample")) {
                                                             testSiteUrls.add(href);
-                                                            System.out.println("spot-sample link: " + href);
+                                                            //System.out.println("spot-sample link: " + href);
                                                         }
                                                     }
                                                 }
