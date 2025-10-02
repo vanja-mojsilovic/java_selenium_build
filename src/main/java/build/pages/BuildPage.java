@@ -20,6 +20,8 @@ import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.Collections;
+
 
 
 public class BuildPage extends AbstractClass{
@@ -33,19 +35,17 @@ public class BuildPage extends AbstractClass{
     }
 
     // Methods
-    public JSONObject fetchSpotSampleLinks(String email, String apiToken) throws Exception {
+    public JSONObject fetchSpotSampleLinks(String email, String apiToken,String jql) throws Exception {
         JSONObject result = new JSONObject();
-
+        System.out.println(jql);
         String apiUrl = "https://spothopper.atlassian.net/rest/api/3/search/jql";
-        String jqlPayload = """
-       {
-         "jql": "issuetype in (Epic, LandingAG, Redesign) AND status = QA ORDER BY statusCategoryChangedDate ASC",
-         "fields": ["key", "customfield_10053", "comment"]
-       }
-    """;
-
+        String jqlPayload = String.format("""
+           {
+             "jql": "%s",
+             "fields": ["key", "customfield_10053", "comment"]
+           }
+        """, jql.replace("\"", "\\\""));
         String auth = Base64.getEncoder().encodeToString((email + ":" + apiToken).getBytes(StandardCharsets.UTF_8));
-
         HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Authorization", "Basic " + auth);
@@ -53,13 +53,9 @@ public class BuildPage extends AbstractClass{
         conn.setRequestProperty("Accept", "application/json");
         conn.setDoOutput(true);
         System.out.println("Request URL: " + apiUrl);
-
-
-
         try (OutputStream os = conn.getOutputStream()) {
             os.write(jqlPayload.getBytes(StandardCharsets.UTF_8));
         }
-
         String response;
         int status = conn.getResponseCode();
         if (status >= 200 && status < 300) {
@@ -72,22 +68,16 @@ public class BuildPage extends AbstractClass{
                 throw new IOException("Request failed with status " + status + ": " + errorResponse);
             }
         }
-
         JSONObject json = new JSONObject(response);
         JSONArray issues = json.getJSONArray("issues");
-
         for (int i = 0; i < issues.length(); i++) {
             List<String> testSiteUrls = new ArrayList<>();
             JSONObject issue = issues.getJSONObject(i);
             String key = issue.getString("key");
             String spotId = issue.getJSONObject("fields").optString("customfield_10053", "null");
-            //System.out.println("Issue: " + key);
-            //System.out.println("Spot ID: " + spotId);
-
             JSONArray comments = issue.getJSONObject("fields")
                     .optJSONObject("comment")
                     .optJSONArray("comments");
-
             if (comments != null) {
                 for (int j = 0; j < comments.length(); j++) {
                     JSONObject body = comments.getJSONObject(j).optJSONObject("body");
@@ -111,7 +101,6 @@ public class BuildPage extends AbstractClass{
                                             }
                                         }
                                     }
-
                                     // 🔹 Case 2: text block with link mark
                                     if ("text".equals(part.optString("type"))) {
                                         JSONArray marks = part.optJSONArray("marks");
@@ -236,7 +225,79 @@ public class BuildPage extends AbstractClass{
         }
     }
 
+    public List<String> fetchIssueKeys(String email, String apiToken, String jql) throws Exception {
+        String apiUrl = "https://spothopper.atlassian.net/rest/api/3/search/jql";
 
+        String jqlPayload = String.format("""
+        {
+         "jql": "%s",
+         "fields": ["key"]
+       }
+    """, jql.replace("\"", "\\\""));
+
+        String auth = Base64.getEncoder().encodeToString((email + ":" + apiToken).getBytes(StandardCharsets.UTF_8));
+
+        HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Authorization", "Basic " + auth);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setDoOutput(true);
+
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(jqlPayload.getBytes(StandardCharsets.UTF_8));
+        }
+
+        String response;
+        int status = conn.getResponseCode();
+        if (status >= 200 && status < 300) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
+                response = reader.lines().collect(Collectors.joining("\n"));
+            }
+        } else {
+            try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(conn.getErrorStream(), StandardCharsets.UTF_8))) {
+                String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
+                throw new IOException("Request failed with status " + status + ": " + errorResponse);
+            }
+        }
+
+        JSONObject json = new JSONObject(response);
+        JSONArray issues = json.getJSONArray("issues");
+
+        List<String> keys = new ArrayList<>();
+        for (int i = 0; i < issues.length(); i++) {
+            JSONObject issue = issues.getJSONObject(i);
+            keys.add(issue.getString("key"));
+        }
+
+        return keys;
+    }
+
+    public String getFilteredTasksCsv(List<String> allTasks, List<String> suppressionList) {
+        if (allTasks == null || allTasks.isEmpty()) {
+            return "";
+        }
+        if (suppressionList == null) {
+            suppressionList = Collections.emptyList();
+        }
+        List<String> filtered = new ArrayList<>();
+        for (String task : allTasks) {
+            if (!suppressionList.contains(task)) {
+                filtered.add(task);
+            }
+        }
+        if (filtered.isEmpty()) {
+            return "";
+        }
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < filtered.size(); i++) {
+            result.append(filtered.get(i));
+            if (i < filtered.size() - 1) {
+                result.append(",");
+            }
+        }
+        return result.toString();
+    }
 
 
 }

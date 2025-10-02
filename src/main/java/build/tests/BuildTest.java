@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 public class BuildTest extends BaseTest{
     public static void main(String[] args) throws Exception {
+        // Set up
         BuildTest buildTest = new BuildTest();
         buildTest.setUp();
         WebDriver driver = buildTest.driver;
@@ -28,8 +29,8 @@ public class BuildTest extends BaseTest{
         boolean isCi = System.getenv("CI") != null;
         String email = VariablesPage.get("VANJA_EMAIL");
         String apiToken = VariablesPage.get("JIRA_API_KEY");
-        System.out.println("Loaded Email: '" + email + "'");
-        System.out.println("Loaded API Token Length: " + (apiToken != null ? apiToken.length() : "null"));
+        //System.out.println("Loaded Email: '" + email + "'");
+        //System.out.println("Loaded API Token Length: " + (apiToken != null ? apiToken.length() : "null"));
         if (email == null || email.trim().isEmpty()) {
             System.err.println("ERROR: VANJA_EMAIL environment variable is not set or is empty!");
             System.exit(1);
@@ -39,9 +40,14 @@ public class BuildTest extends BaseTest{
             System.exit(1);
         }
 
-
-        String jql = "labels NOT IN (WordPress,LocationLanding,LocationPicker,LandingBuild) AND issuetype in (Epic, LandingAG, Redesign) AND status = QA AND assignee not in (membersOF(QA))";
-        JSONObject  tasks = buildPage.fetchSpotSampleLinks(email, apiToken);
+        // Fetch all the tasks from Jira
+        String initialJql = "labels NOT IN (WordPress,LocationLanding,LocationPicker,LandingBuild) AND issuetype in (Epic, LandingAG, Redesign) AND status = QA AND assignee not in (membersOF(QA))";
+        List<String> allTasks = buildPage.fetchIssueKeys(email,apiToken,initialJql);
+        String suppressionJql = "((status CHANGED TO QA BEFORE -4d) OR (comment ~ \"Build settings done by automation.\")) AND labels NOT IN (WordPress, LocationLanding, LocationPicker, LandingBuild) AND issuetype IN (Epic, LandingAG, Redesign) AND assignee NOT IN (membersOF(QA)) AND status in (QA)";
+        List<String> suppressionList = buildPage.fetchIssueKeys(email,apiToken,suppressionJql);
+        String finalTasksListString = buildPage.getFilteredTasksCsv(allTasks,suppressionList);
+        String finalJql = "issue in (" + finalTasksListString + ")";
+        JSONObject  tasks = buildPage.fetchSpotSampleLinks(email,apiToken,finalJql);
         for (String taskKey : tasks.keySet()) {
             JSONObject task = tasks.getJSONObject(taskKey);
             String key = task.getString("issue_key");
@@ -49,10 +55,11 @@ public class BuildTest extends BaseTest{
             String testSiteUrl = task.getString("test_site_url");
             System.out.println(key + " " + spotId + " " + testSiteUrl);
         }
+        System.out.println("End!");
         int spotId = 321387;
         String fieldName = "city";
         String newValue = "Seattle";
-        buildPage.updateSpotField(spotId,fieldName,newValue);
+        //buildPage.updateSpotField(spotId,fieldName,newValue);
 
         System.exit(0);
     }
