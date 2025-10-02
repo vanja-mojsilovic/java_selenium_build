@@ -180,50 +180,7 @@ public class BuildPage extends AbstractClass{
         }
     }
 
-    public void updateSpotField(int spotId, String fieldName, String newValue) {
-        try {
-            String cookie = System.getenv("SPOTHOPPER_COOKIES");
-            if (cookie == null || cookie.isBlank()) {
-                Dotenv dotenv = Dotenv.configure()
-                        .directory(System.getProperty("user.dir"))
-                        .ignoreIfMalformed()
-                        .ignoreIfMissing()
-                        .load();
-                cookie = dotenv.get("SPOTHOPPER_COOKIES");
-            }
-            if (cookie == null || cookie.isBlank()) {
-                System.err.println("SPOTHOPPER_COOKIES not provided or empty.");
-                return;
-            }
-            String apiUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/";
-            URL url = new URL(apiUrl);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("PUT");
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setRequestProperty("Cookie", cookie);
-            con.setDoOutput(true);
-            String jsonInputString = String.format("{ \"%s\": \"%s\" }", fieldName, newValue);
-            try (OutputStream os = con.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
-                os.write(input, 0, input.length);
-            }
-            int responseCode = con.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
-            if (responseCode >= 200 && responseCode < 300) {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
-                    String response = reader.lines().collect(Collectors.joining("\n"));
-                    System.out.println("Spot updated successfully! ");
-                }
-            } else {
-                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream(), StandardCharsets.UTF_8))) {
-                    String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
-                    System.err.println("Failed to update spot: " + responseCode + " - " + errorResponse);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public List<String> fetchIssueKeys(String email, String apiToken, String jql) throws Exception {
         String apiUrl = "https://spothopper.atlassian.net/rest/api/3/search/jql";
@@ -297,6 +254,97 @@ public class BuildPage extends AbstractClass{
             }
         }
         return result.toString();
+    }
+
+    public JSONObject fetchWebsiteFields(int spotId) throws Exception {
+        String cookie = getSpothopperCookie();
+        if (cookie == null) return null;
+        String urlStr = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";
+        URL url = new URL(urlStr);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setRequestProperty("Cookie", cookie);
+        int status = conn.getResponseCode();
+        if (status >= 200 && status < 300) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
+                String response = reader.lines().collect(Collectors.joining("\n"));
+                if (response.trim().startsWith("{")) {
+                    JSONObject json = new JSONObject(response);
+                    JSONObject result = new JSONObject();
+                    result.put("is_ada", json.optBoolean("is_ada", false));
+                    result.put("is_wcache", json.optBoolean("is_wcache", false));
+                    result.put("test_site_number", json.optString("test_site_number", "null"));
+                    result.put("need_website_feedback", json.optBoolean("need_website_feedback", false));
+                    result.put("is_real_website", json.optBoolean("is_real_website", false));
+                    result.put("is_wcache_test_location", json.optBoolean("is_wcache_test_location", false));
+                    return result;
+                } else {
+                    System.err.println("Response for spot " + spotId + " is not valid JSON.");
+                    return null;
+                }
+            }
+        } else {
+            try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(conn.getErrorStream(), StandardCharsets.UTF_8))) {
+                String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
+                System.err.println("Request failed for spot " + spotId + " with status " + status + ": " + errorResponse);
+                return null;
+            }
+        }
+    }
+
+
+
+    public void updateSpotField(int spotId, String fieldName, String newValue) {
+        String cookie = getSpothopperCookie();
+        if (cookie == null) return;
+        try {
+            String apiUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/";
+            URL url = new URL(apiUrl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("PUT");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Cookie", cookie);
+            con.setDoOutput(true);
+            String jsonInputString = String.format("{ \"%s\": \"%s\" }", fieldName, newValue);
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+            if (responseCode >= 200 && responseCode < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
+                    String response = reader.lines().collect(Collectors.joining("\n"));
+                    System.out.println("Spot updated successfully!");
+                }
+            } else {
+                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream(), StandardCharsets.UTF_8))) {
+                    String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
+                    System.err.println(" Failed to update spot: " + responseCode + " - " + errorResponse);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static String getSpothopperCookie() {
+        String cookie = System.getenv("SPOTHOPPER_COOKIES");
+        if (cookie == null || cookie.isBlank()) {
+            Dotenv dotenv = Dotenv.configure()
+                    .directory(System.getProperty("user.dir"))
+                    .ignoreIfMalformed()
+                    .ignoreIfMissing()
+                    .load();
+            cookie = dotenv.get("SPOTHOPPER_COOKIES");
+        }
+        if (cookie == null || cookie.isBlank()) {
+            System.err.println("SPOTHOPPER_COOKIES not provided or empty.");
+            return null;
+        }
+        return cookie;
     }
 
 

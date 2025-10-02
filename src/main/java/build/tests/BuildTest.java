@@ -54,6 +54,22 @@ public class BuildTest extends BaseTest{
             String spotId = task.getString("spot_id");
             String testSiteUrl = task.getString("test_site_url");
             System.out.println(key + " " + spotId + " " + testSiteUrl);
+            int spotIdInteger = Integer.parseInt(task.getString("spot_id"));
+            JSONObject websiteFieldsJson = buildPage.fetchWebsiteFields(spotIdInteger);
+            if (websiteFieldsJson != null) {
+                System.out.println("Spot ID: " + spotIdInteger);
+                System.out.println("is_ada: " + websiteFieldsJson.optBoolean("is_ada", false));
+                System.out.println("is_wcache: " + websiteFieldsJson.optBoolean("is_wcache", false));
+                System.out.println("test_site_number: " + websiteFieldsJson.optString("test_site_number", "null"));
+                System.out.println("need_website_feedback: " + websiteFieldsJson.optBoolean("need_website_feedback", false));
+                System.out.println("is_real_website: " + websiteFieldsJson.optBoolean("is_real_website", false));
+                System.out.println("is_wcache_test_location: " + websiteFieldsJson.optBoolean("is_wcache_test_location", false));
+                System.out.println("--------------------------------------------------");
+            } else {
+                System.err.println("No website fields returned for spot " + spotIdInteger);
+            }
+
+
         }
         System.out.println("End!");
         int spotId = 321387;
@@ -63,4 +79,8 @@ public class BuildTest extends BaseTest{
 
         System.exit(0);
     }
+
+
+
+
 }
