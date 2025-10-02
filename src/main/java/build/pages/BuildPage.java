@@ -1,35 +1,25 @@
 package build.pages;
 
+import build.tests.BaseTest;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import java.io.UnsupportedEncodingException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import build.tests.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.openqa.selenium.JavascriptExecutor;
-import java.io.InputStream;
 import java.util.stream.Collectors;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-
-
+import io.github.cdimascio.dotenv.Dotenv;
 
 
 public class BuildPage extends AbstractClass{
@@ -157,6 +147,97 @@ public class BuildPage extends AbstractClass{
         }
         return result;
     }
+
+    public void changeCityOnApp() {
+        try {
+            Dotenv dotenv = Dotenv.configure()
+                    .directory(System.getProperty("user.dir")) // ensures correct path
+                    .ignoreIfMalformed()
+                    .ignoreIfMissing()
+                    .load();
+            String cookie = dotenv.get("SPOTHOPPER_COOKIES");
+            if (cookie == null || cookie.isBlank()) {
+                System.err.println("SPOTHOPPER_COOKIES not loaded. Check .env file format and location.");
+                return;
+            }
+            int spotId = 321387;
+            String apiUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/";
+            URL url = new URL(apiUrl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("PUT");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Cookie", cookie);
+            con.setDoOutput(true);
+            String jsonInputString = "{ \"city\": \"Austin\" }";
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+            if (responseCode >= 200 && responseCode < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
+                    String response = reader.lines().collect(Collectors.joining("\n"));
+                    System.out.println("City updated successfully! ");
+                }
+            } else {
+                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream(), StandardCharsets.UTF_8))) {
+                    String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
+                    System.err.println(" Failed to update city: " + responseCode + " - " + errorResponse);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateSpotField(int spotId, String fieldName, String newValue) {
+        try {
+            String cookie = System.getenv("SPOTHOPPER_COOKIES");
+            if (cookie == null || cookie.isBlank()) {
+                Dotenv dotenv = Dotenv.configure()
+                        .directory(System.getProperty("user.dir"))
+                        .ignoreIfMalformed()
+                        .ignoreIfMissing()
+                        .load();
+                cookie = dotenv.get("SPOTHOPPER_COOKIES");
+            }
+            if (cookie == null || cookie.isBlank()) {
+                System.err.println("SPOTHOPPER_COOKIES not provided or empty.");
+                return;
+            }
+            String apiUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/";
+            URL url = new URL(apiUrl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("PUT");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Cookie", cookie);
+            con.setDoOutput(true);
+            String jsonInputString = String.format("{ \"%s\": \"%s\" }", fieldName, newValue);
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+            if (responseCode >= 200 && responseCode < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
+                    String response = reader.lines().collect(Collectors.joining("\n"));
+                    System.out.println("Spot updated successfully! ");
+                }
+            } else {
+                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream(), StandardCharsets.UTF_8))) {
+                    String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
+                    System.err.println("Failed to update spot: " + responseCode + " - " + errorResponse);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 }
 

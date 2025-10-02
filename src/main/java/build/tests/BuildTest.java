@@ -48,9 +48,11 @@ public class BuildTest extends BaseTest{
             String spotId = task.getString("spot_id");
             String testSiteUrl = task.getString("test_site_url");
             System.out.println(key + " " + spotId + " " + testSiteUrl);
-
         }
-
+        int spotId = 321387;
+        String fieldName = "city";
+        String newValue = "Dallas";
+        buildPage.updateSpotField(spotId,fieldName,newValue);
 
         System.exit(0);
     }
