@@ -51,7 +51,7 @@ public class BuildTest extends BaseTest{
         }
         int spotId = 321387;
         String fieldName = "city";
-        String newValue = "Dallas";
+        String newValue = "Seattle";
         buildPage.updateSpotField(spotId,fieldName,newValue);
 
         System.exit(0);
