@@ -56,15 +56,49 @@ public class BuildTest extends BaseTest{
             System.out.println(key + " " + spotId + " " + testSiteUrl);
             int spotIdInteger = Integer.parseInt(task.getString("spot_id"));
             JSONObject websiteFieldsJson = buildPage.fetchWebsiteFields(spotIdInteger);
+            String jiraCommentMessage = "Automation test:\n";
             if (websiteFieldsJson != null) {
+                boolean is_ada = websiteFieldsJson.optBoolean("is_ada", false);
+                if(!is_ada){
+                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
+                    jiraCommentMessage += "ADA checkbox has been set to true\n";
+                }
+                boolean is_real_website = websiteFieldsJson.optBoolean("is_real_website", false);
+                if(!is_real_website){
+                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
+                    jiraCommentMessage += "Real Website has been set to true\n";
+                }
+                boolean is_wcache = websiteFieldsJson.optBoolean("is_wcache", false);
+                if(!is_wcache){
+                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache",true);
+                    jiraCommentMessage += "Wcache checkbox has been set to true\n";
+                }
+                boolean is_wcache_test_location = websiteFieldsJson.optBoolean("is_wcache_test_location", false);
+                if(!is_wcache_test_location){
+                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache_test_location",true);
+                    jiraCommentMessage += "Wcache test location checkbox has been set to true\n";
+                }
+                String test_site_number = websiteFieldsJson.optString("test_site_number", "null").trim();
+                if(test_site_number == "" || test_site_number == null){
+                    // Need to create a method to update string value
+                    jiraCommentMessage += "Test site number has been updated\n";
+                }
+                String need_website_feedback = websiteFieldsJson.optString("need_website_feedback", false);
+                if(need_website_feedback == "" || need_website_feedback == null){
+                    // Need to create a method to trigger javascript function
+                    jiraCommentMessage += "Start Build button clicked\n";
+                }
+
+                // Enter comment in Jira
+
                 System.out.println("Spot ID: " + spotIdInteger);
-                System.out.println("is_ada: " + websiteFieldsJson.optBoolean("is_ada", false));
-                System.out.println("is_wcache: " + websiteFieldsJson.optBoolean("is_wcache", false));
-                System.out.println("test_site_number: " + websiteFieldsJson.optString("test_site_number", "null"));
-                System.out.println("need_website_feedback: " + websiteFieldsJson.optBoolean("need_website_feedback", false));
-                System.out.println("is_real_website: " + websiteFieldsJson.optBoolean("is_real_website", false));
-                System.out.println("is_wcache_test_location: " + websiteFieldsJson.optBoolean("is_wcache_test_location", false));
-                System.out.println("--------------------------------------------------");
+                System.out.println("is_ada: " + is_ada);
+                System.out.println("is_wcache: " + is_wcache);
+                System.out.println("test_site_number: " + test_site_number);
+                System.out.println("need_website_feedback: " + need_website_feedback);
+                System.out.println("is_real_website: " + is_real_website);
+                System.out.println("is_wcache_test_location: " + is_wcache_test_location);
+
             } else {
                 System.err.println("No website fields returned for spot " + spotIdInteger);
             }
@@ -72,10 +106,7 @@ public class BuildTest extends BaseTest{
 
         }
         System.out.println("End!");
-        int spotId = 321387;
-        String fieldName = "city";
-        String newValue = "Seattle";
-        //buildPage.updateSpotField(spotId,fieldName,newValue);
+
 
         System.exit(0);
     }

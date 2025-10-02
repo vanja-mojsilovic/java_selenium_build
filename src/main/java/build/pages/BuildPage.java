@@ -347,6 +347,44 @@ public class BuildPage extends AbstractClass{
         return cookie;
     }
 
+    public void updateWebsiteBooleanField(int spotId, String fieldName, boolean newValue) {
+        String cookie = getSpothopperCookie();
+        if (cookie == null) {
+            System.err.println("No cookie available — cannot proceed.");
+            return;
+        }
+        try {
+            String apiUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";
+            URL url = new URL(apiUrl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("PUT");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Cookie", cookie);
+            con.setDoOutput(true);
+            String jsonInputString = String.format("{ \"%s\": %s }", fieldName, newValue);
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
+            if (responseCode >= 200 && responseCode < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
+                    String response = reader.lines().collect(Collectors.joining("\n"));
+                    System.out.println("✅ Spot " + spotId + " updated: " + fieldName + " = " + newValue);
+                }
+            } else {
+                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream(), StandardCharsets.UTF_8))) {
+                    String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
+                    System.err.println("❌ Failed to update spot " + spotId + ": " + responseCode + " - " + errorResponse);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Exception while updating spot " + spotId + ": " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 
 }
 
