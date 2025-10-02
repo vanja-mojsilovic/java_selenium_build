@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      CI: true
       JIRA_API_KEY: ${{ secrets.JIRA_API_KEY }}
       VANJA_EMAIL: ${{ secrets.VANJA_EMAIL }}
       VANJA_GOOGLE_SECRET_KEY: ${{ secrets.VANJA_GOOGLE_SECRET_KEY }}
       H_SECRET_KEY_VANJA: ${{ secrets.H_SECRET_KEY_VANJA }}
+      SPOTHOPPER_COOKIES: ${{ secrets.SPOTHOPPER_COOKIES }}
       DISPLAY: :99  # Required for Xvfb
 
     steps:
