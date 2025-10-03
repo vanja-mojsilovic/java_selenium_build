@@ -57,39 +57,79 @@ public class BuildTest extends BaseTest{
             int spotIdInteger = Integer.parseInt(task.getString("spot_id"));
             JSONObject websiteFieldsJson = buildPage.fetchWebsiteFields(spotIdInteger);
             String jiraCommentMessage = "Automation test:\n";
+            int spotIdInt = Integer.parseInt(spotId);
             if (websiteFieldsJson != null) {
-                boolean is_ada = websiteFieldsJson.optBoolean("is_ada", false);
+                boolean is_ada = firstWebsite != null && firstWebsite.has("is_ada")
+                        ? firstWebsite.optBoolean("is_ada", false)
+                        : false;
+                boolean is_real_website = firstWebsite != null && firstWebsite.has("is_real_website")
+                        ? firstWebsite.optBoolean("is_real_website", false)
+                        : false;
+                boolean is_wcache = firstWebsite != null && firstWebsite.has("is_wcache")
+                        ? firstWebsite.optBoolean("is_wcache", false)
+                        : false;
+                boolean is_wcache_test_location = firstWebsite != null && firstWebsite.has("is_wcache_test_location")
+                        ? firstWebsite.optBoolean("is_wcache_test_location", false)
+                        : false;
+
+                String test_site_number = firstWebsite != null && firstWebsite.has("test_site_number")
+                        ? firstWebsite.optString("test_site_number", "null")
+                        : "null";
+
+                String need_website_feedback = firstWebsite != null && firstWebsite.has("need_website_feedback")
+                        ? firstWebsite.optString("need_website_feedback", "null")
+                        : "null";
+
+
+
+
+
                 if(!is_ada){
                     buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
-                    jiraCommentMessage += "ADA checkbox has been set to true\n";
+                    String message = "ADA checkbox has been set to true";
+                    jiraCommentMessage += message + "\n";
+                    System.out.println(message);
+
                 }
-                boolean is_real_website = websiteFieldsJson.optBoolean("is_real_website", false);
                 if(!is_real_website){
-                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
-                    jiraCommentMessage += "Real Website has been set to true\n";
+                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_real_website",true);
+                    String message = "Real Website has been set to true";
+                    jiraCommentMessage += message + "\n";
+                    System.out.println(message);
                 }
-                boolean is_wcache = websiteFieldsJson.optBoolean("is_wcache", false);
+
                 if(!is_wcache){
                     buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache",true);
-                    jiraCommentMessage += "Wcache checkbox has been set to true\n";
+                    String message = "Wcache checkbox has been set to true";
+                    jiraCommentMessage += message + "\n";
+                    System.out.println(message);
                 }
-                boolean is_wcache_test_location = websiteFieldsJson.optBoolean("is_wcache_test_location", false);
                 if(!is_wcache_test_location){
                     buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache_test_location",true);
-                    jiraCommentMessage += "Wcache test location checkbox has been set to true\n";
+                    String message = "Wcache test location checkbox has been set to true";
+                    jiraCommentMessage += message + "\n";
+                    System.out.println(message);
                 }
-                String test_site_number = websiteFieldsJson.optString("test_site_number", "null").trim();
+
                 if(test_site_number == "" || test_site_number == null){
-                    // Need to create a method to update string value
-                    jiraCommentMessage += "Test site number has been updated\n";
+                    int startIndex = testSiteUrl.indexOf("https://spot-sample-") + "https://spot-sample-".length();
+                    int endIndex = testSiteUrl.indexOf(".spotapps.co/");
+                    String testSiteNumber = testSiteUrl.substring(startIndex, endIndex);
+                    buildPage.updateStringField(spotIdInt,"test_site_number",testSiteNumber);
+                    String message = "Test site number has been updated";
+                    jiraCommentMessage += message + "\n";
+                    System.out.println(message);
                 }
-                String need_website_feedback = websiteFieldsJson.optString("need_website_feedback", false);
-                if(need_website_feedback == "" || need_website_feedback == null){
-                    // Need to create a method to trigger javascript function
-                    jiraCommentMessage += "Start Build button clicked\n";
+
+                if(need_website_feedback.isEmpty()){
+                    buildPage.updateFieldAndTriggerBuild(spotIdInt,"need_website_feedback","Don't Need It");
+                    String message = "Start Build button clicked";
+                    jiraCommentMessage += message + "\n";
+                    System.out.println(message);
                 }
 
                 // Enter comment in Jira
+                buildPage.addCommentToIssue(email,apiToken,key,jiraCommentMessage); // here is the error
 
                 System.out.println("Spot ID: " + spotIdInteger);
                 System.out.println("is_ada: " + is_ada);

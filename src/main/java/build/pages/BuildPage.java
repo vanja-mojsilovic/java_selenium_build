@@ -5,11 +5,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import java.io.UnsupportedEncodingException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -17,12 +18,11 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import io.github.cdimascio.dotenv.Dotenv;
-import java.util.Collections;
-
-
 
 public class BuildPage extends AbstractClass{
 
@@ -260,6 +260,7 @@ public class BuildPage extends AbstractClass{
         String cookie = getSpothopperCookie();
         if (cookie == null) return null;
         String urlStr = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";
+        System.out.println("urlStr: " + urlStr);
         URL url = new URL(urlStr);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -272,12 +273,45 @@ public class BuildPage extends AbstractClass{
                 if (response.trim().startsWith("{")) {
                     JSONObject json = new JSONObject(response);
                     JSONObject result = new JSONObject();
-                    result.put("is_ada", json.optBoolean("is_ada", false));
-                    result.put("is_wcache", json.optBoolean("is_wcache", false));
-                    result.put("test_site_number", json.optString("test_site_number", "null"));
-                    result.put("need_website_feedback", json.optBoolean("need_website_feedback", false));
-                    result.put("is_real_website", json.optBoolean("is_real_website", false));
-                    result.put("is_wcache_test_location", json.optBoolean("is_wcache_test_location", false));
+                    JSONObject firstWebsite = json.optJSONArray("websites").optJSONObject(0);
+
+                    boolean is_ada = firstWebsite != null && firstWebsite.has("is_ada")
+                            ? firstWebsite.optBoolean("is_ada", false)
+                            : false;
+
+                    boolean is_wcache = firstWebsite != null && firstWebsite.has("is_wcache")
+                            ? firstWebsite.optBoolean("is_wcache", false)
+                            : false;
+
+                    String test_site_number = firstWebsite != null && firstWebsite.has("test_site_number")
+                            ? firstWebsite.optString("test_site_number", "null")
+                            : "null";
+
+                    String need_website_feedback = firstWebsite != null && firstWebsite.has("need_website_feedback")
+                            ? firstWebsite.optString("need_website_feedback", "null")
+                            : "null";
+
+                    boolean is_real_website = firstWebsite != null && firstWebsite.has("is_real_website")
+                            ? firstWebsite.optBoolean("is_real_website", false)
+                            : false;
+
+                    boolean is_wcache_test_location = firstWebsite != null && firstWebsite.has("is_wcache_test_location")
+                            ? firstWebsite.optBoolean("is_wcache_test_location", false)
+                            : false;
+                    System.out.println("is_ada: " + is_ada);
+                    System.out.println("is_wcache: " + is_wcache);
+                    System.out.println("test_site_number: " + test_site_number);
+                    System.out.println("need_website_feedback: " + need_website_feedback);
+                    System.out.println("is_real_website: " + is_real_website);
+                    System.out.println("is_wcache_test_location: " + is_wcache_test_location);
+
+                    result.put("is_ada", is_ada);
+                    result.put("is_wcache", is_wcache);
+                    result.put("test_site_number", test_site_number);
+                    result.put("need_website_feedback", need_website_feedback);
+                    result.put("is_real_website", is_real_website);
+                    result.put("is_wcache_test_location", is_wcache_test_location);
+
                     return result;
                 } else {
                     System.err.println("Response for spot " + spotId + " is not valid JSON.");
@@ -371,17 +405,162 @@ public class BuildPage extends AbstractClass{
             if (responseCode >= 200 && responseCode < 300) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
                     String response = reader.lines().collect(Collectors.joining("\n"));
-                    System.out.println("✅ Spot " + spotId + " updated: " + fieldName + " = " + newValue);
+                    System.out.println("Spot " + spotId + " updated: " + fieldName + " = " + newValue);
                 }
             } else {
                 try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream(), StandardCharsets.UTF_8))) {
                     String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
-                    System.err.println("❌ Failed to update spot " + spotId + ": " + responseCode + " - " + errorResponse);
+                    System.err.println("Failed to update spot " + spotId + ": " + responseCode + " - " + errorResponse);
                 }
             }
         } catch (IOException e) {
             System.err.println("Exception while updating spot " + spotId + ": " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    public void updateFieldAndTriggerBuild(int spotId, String fieldName, String fieldValue) {
+        String cookie = getSpothopperCookie();
+        if (cookie == null || cookie.isEmpty()) {
+            System.err.println("No cookie available — cannot proceed.");
+            return;
+        }
+        try {
+            String updateUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";
+            HttpURLConnection updateCon = (HttpURLConnection) new URL(updateUrl).openConnection();
+            updateCon.setRequestMethod("PUT");
+            updateCon.setRequestProperty("Content-Type", "application/json");
+            updateCon.setRequestProperty("Cookie", cookie);
+            updateCon.setDoOutput(true);
+            String escapedValue = fieldValue == null ? "null" : "\"" + fieldValue.replace("\"", "\\\"") + "\"";
+            String updatePayload = String.format("{ \"%s\": %s }", fieldName, escapedValue);
+            try (OutputStream os = updateCon.getOutputStream()) {
+                os.write(updatePayload.getBytes(StandardCharsets.UTF_8));
+            }
+            int updateResponse = updateCon.getResponseCode();
+            if (updateResponse >= 200 && updateResponse < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(updateCon.getInputStream(), StandardCharsets.UTF_8))) {
+                    String response = reader.lines().collect(Collectors.joining("\n"));
+                    //System.out.println("Field updated successfully: " + response);
+                }
+            } else {
+                System.err.println("Failed to update field. Skipping trigger.");
+                return;
+            }
+            String triggerUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites/website_in_progress";
+            HttpURLConnection triggerCon = (HttpURLConnection) new URL(triggerUrl).openConnection();
+            triggerCon.setRequestMethod("PUT");
+            triggerCon.setRequestProperty("Content-Type", "application/json");
+            triggerCon.setRequestProperty("Cookie", cookie);
+            triggerCon.setDoOutput(true);
+            String triggerPayload = "{}";
+            try (OutputStream os = triggerCon.getOutputStream()) {
+                os.write(triggerPayload.getBytes(StandardCharsets.UTF_8));
+            }
+            int triggerResponse = triggerCon.getResponseCode();
+            //System.out.println("Trigger response: " + triggerResponse);
+            if (triggerResponse >= 200 && triggerResponse < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(triggerCon.getInputStream(), StandardCharsets.UTF_8))) {
+                    String response = reader.lines().collect(Collectors.joining("\n"));
+                    System.out.println("websiteInProgress() triggered successfully: ");
+                }
+            } else {
+                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(triggerCon.getErrorStream(), StandardCharsets.UTF_8))) {
+                    String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
+                    System.err.println("Trigger failed: " + triggerResponse + " - " + errorResponse);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Exception during update and trigger: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void updateStringField(int spotId, String fieldName, String fieldValue) {
+        String cookie = getSpothopperCookie();
+        if (cookie == null || cookie.isEmpty()) {
+            System.err.println("No cookie available — cannot proceed.");
+            return;
+        }
+        try {
+            String updateUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";
+            HttpURLConnection updateCon = (HttpURLConnection) new URL(updateUrl).openConnection();
+            updateCon.setRequestMethod("PUT");
+            updateCon.setRequestProperty("Content-Type", "application/json");
+            updateCon.setRequestProperty("Cookie", cookie);
+            updateCon.setDoOutput(true);
+            String escapedValue = fieldValue == null ? "null" : "\"" + fieldValue.replace("\"", "\\\"") + "\"";
+            String updatePayload = String.format("{ \"%s\": %s }", fieldName, escapedValue);
+            try (OutputStream os = updateCon.getOutputStream()) {
+                os.write(updatePayload.getBytes(StandardCharsets.UTF_8));
+            }
+            int updateResponse = updateCon.getResponseCode();
+            if (updateResponse >= 200 && updateResponse < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(updateCon.getInputStream(), StandardCharsets.UTF_8))) {
+                    String response = reader.lines().collect(Collectors.joining("\n"));
+                    System.out.println("Field \"" + fieldName + "\" updated successfully for spot " + spotId);
+                }
+            } else {
+                System.err.println("Failed to update field \"" + fieldName + "\" for spot " + spotId + ". Response code: " + updateResponse);
+            }
+        } catch (IOException e) {
+            System.err.println("Exception during field update: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void addCommentToIssue(String email, String apiToken, String issueKey, String commentText) throws Exception {
+        String apiUrl = "https://spothopper.atlassian.net/rest/api/3/issue/" + issueKey + "/comment";
+        String auth = Base64.getEncoder().encodeToString((email + ":" + apiToken).getBytes(StandardCharsets.UTF_8));
+        HttpURLConnection conn = createConnection(apiUrl, auth);
+        String payload = """
+        {
+          "body": {
+            "type": "doc",
+            "version": 1,
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "%s"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+    """.formatted(commentText.replace("\"", "\\\""));
+        sendPayload(conn, payload);
+        String response = readResponse(conn);
+        //System.out.println("Comment response: " + response);
+    }
+
+    private HttpURLConnection createConnection(String apiUrl, String auth) throws IOException {
+        HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Authorization", "Basic " + auth);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setDoOutput(true);
+        return conn;
+    }
+
+    private void sendPayload(HttpURLConnection conn, String payload) throws IOException {
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(payload.getBytes(StandardCharsets.UTF_8));
+        }
+    }
+
+    private String readResponse(HttpURLConnection conn) throws IOException {
+        int status = conn.getResponseCode();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                status >= 200 && status < 300 ? conn.getInputStream() : conn.getErrorStream(),
+                StandardCharsets.UTF_8))) {
+            String response = reader.lines().collect(Collectors.joining("\n"));
+            if (status >= 200 && status < 300) return response;
+            throw new IOException("Request failed with status " + status + ": " + response);
         }
     }
 
