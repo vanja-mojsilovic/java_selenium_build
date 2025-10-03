@@ -284,12 +284,13 @@ public class BuildPage extends AbstractClass{
                             : false;
 
                     String test_site_number = firstWebsite != null && firstWebsite.has("test_site_number")
-                            ? firstWebsite.optString("test_site_number", "null")
-                            : "null";
+                            ? firstWebsite.isNull("test_site_number") ? null : firstWebsite.optString("test_site_number", null)
+                            : null;
 
                     String need_website_feedback = firstWebsite != null && firstWebsite.has("need_website_feedback")
-                            ? firstWebsite.optString("need_website_feedback", "null")
-                            : "null";
+                            ? firstWebsite.isNull("need_website_feedback") ? null : firstWebsite.optString("need_website_feedback", null)
+                            : null;
+
 
                     boolean is_real_website = firstWebsite != null && firstWebsite.has("is_real_website")
                             ? firstWebsite.optBoolean("is_real_website", false)

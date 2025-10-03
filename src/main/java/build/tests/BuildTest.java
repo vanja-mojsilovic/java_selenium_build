@@ -59,26 +59,27 @@ public class BuildTest extends BaseTest{
             String jiraCommentMessage = "Automation test:\n";
             int spotIdInt = Integer.parseInt(spotId);
             if (websiteFieldsJson != null) {
-                boolean is_ada = firstWebsite != null && firstWebsite.has("is_ada")
-                        ? firstWebsite.optBoolean("is_ada", false)
+                boolean is_ada = websiteFieldsJson != null && websiteFieldsJson.has("is_ada")
+                        ? websiteFieldsJson.optBoolean("is_ada", false)
                         : false;
-                boolean is_real_website = firstWebsite != null && firstWebsite.has("is_real_website")
-                        ? firstWebsite.optBoolean("is_real_website", false)
+                boolean is_real_website = websiteFieldsJson != null && websiteFieldsJson.has("is_real_website")
+                        ? websiteFieldsJson.optBoolean("is_real_website", false)
                         : false;
-                boolean is_wcache = firstWebsite != null && firstWebsite.has("is_wcache")
-                        ? firstWebsite.optBoolean("is_wcache", false)
+                boolean is_wcache = websiteFieldsJson != null && websiteFieldsJson.has("is_wcache")
+                        ? websiteFieldsJson.optBoolean("is_wcache", false)
                         : false;
-                boolean is_wcache_test_location = firstWebsite != null && firstWebsite.has("is_wcache_test_location")
-                        ? firstWebsite.optBoolean("is_wcache_test_location", false)
+                boolean is_wcache_test_location = websiteFieldsJson != null && websiteFieldsJson.has("is_wcache_test_location")
+                        ? websiteFieldsJson.optBoolean("is_wcache_test_location", false)
                         : false;
 
-                String test_site_number = firstWebsite != null && firstWebsite.has("test_site_number")
-                        ? firstWebsite.optString("test_site_number", "null")
-                        : "null";
+                String test_site_number = websiteFieldsJson != null && websiteFieldsJson.has("test_site_number")
+                        ? websiteFieldsJson.isNull("test_site_number") ? null : websiteFieldsJson.optString("test_site_number", null)
+                        : null;
 
-                String need_website_feedback = firstWebsite != null && firstWebsite.has("need_website_feedback")
-                        ? firstWebsite.optString("need_website_feedback", "null")
-                        : "null";
+                String need_website_feedback = websiteFieldsJson != null && websiteFieldsJson.has("need_website_feedback")
+                        ? websiteFieldsJson.isNull("need_website_feedback") ? null : websiteFieldsJson.optString("need_website_feedback", null)
+                        : null;
+
 
 
 
@@ -111,9 +112,9 @@ public class BuildTest extends BaseTest{
                     System.out.println(message);
                 }
 
-                if(test_site_number == "" || test_site_number == null){
+                if(test_site_number == null || test_site_number.isEmpty()){
                     int startIndex = testSiteUrl.indexOf("https://spot-sample-") + "https://spot-sample-".length();
-                    int endIndex = testSiteUrl.indexOf(".spotapps.co/");
+                    int endIndex = testSiteUrl.indexOf(".spotapps.co");
                     String testSiteNumber = testSiteUrl.substring(startIndex, endIndex);
                     buildPage.updateStringField(spotIdInt,"test_site_number",testSiteNumber);
                     String message = "Test site number has been updated";
@@ -121,7 +122,7 @@ public class BuildTest extends BaseTest{
                     System.out.println(message);
                 }
 
-                if(need_website_feedback.isEmpty()){
+                if(need_website_feedback == null || need_website_feedback.isEmpty()){
                     buildPage.updateFieldAndTriggerBuild(spotIdInt,"need_website_feedback","Don't Need It");
                     String message = "Start Build button clicked";
                     jiraCommentMessage += message + "\n";
