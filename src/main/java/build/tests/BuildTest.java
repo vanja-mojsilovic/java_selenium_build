@@ -43,9 +43,14 @@ public class BuildTest extends BaseTest{
         // Fetch all the tasks from Jira
         String initialJql = "labels NOT IN (WordPress,LocationLanding,LocationPicker,LandingBuild) AND issuetype in (Epic, LandingAG) AND status = QA AND assignee not in (membersOF(QA))";
         List<String> allTasks = buildPage.fetchIssueKeys(email,apiToken,initialJql);
-        String suppressionJql = "((status CHANGED TO QA BEFORE -4d) OR (comment ~ \"Build settings done by automation.\")) AND labels NOT IN (WordPress, LocationLanding, LocationPicker, LandingBuild) AND issuetype IN (Epic, LandingAG, Redesign) AND assignee NOT IN (membersOF(QA)) AND status in (QA)";
+        String suppressionJql = "((status CHANGED TO QA BEFORE -4d) OR (comment ~ \"Build settings done by automation.\")) AND labels NOT IN (WordPress, LocationLanding, LocationPicker, LandingBuild) AND issuetype IN (Epic, LandingAG) AND assignee NOT IN (membersOF(QA)) AND status in (QA)";
         List<String> suppressionList = buildPage.fetchIssueKeys(email,apiToken,suppressionJql);
         String finalTasksListString = buildPage.getFilteredTasksCsv(allTasks,suppressionList);
+        if (finalTasksListString == null || finalTasksListString.trim().isEmpty()) {
+            System.out.println("No tasks to process — skipping fetchSpotSampleLinks.");
+            return;
+        }
+
         String finalJql = "issue in (" + finalTasksListString + ")";
         JSONObject  tasks = buildPage.fetchSpotSampleLinks(email,apiToken,finalJql);
         for (String taskKey : tasks.keySet()) {
