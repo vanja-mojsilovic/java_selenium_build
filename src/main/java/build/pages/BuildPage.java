@@ -5,7 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
+import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,8 +21,9 @@ import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import io.github.cdimascio.dotenv.Dotenv;
+
+
 
 public class BuildPage extends AbstractClass{
 
@@ -513,30 +514,36 @@ public class BuildPage extends AbstractClass{
     public void addCommentToIssue(String email, String apiToken, String issueKey, String commentText) throws Exception {
         String apiUrl = "https://spothopper.atlassian.net/rest/api/3/issue/" + issueKey + "/comment";
         String auth = Base64.getEncoder().encodeToString((email + ":" + apiToken).getBytes(StandardCharsets.UTF_8));
-        HttpURLConnection conn = createConnection(apiUrl, auth);
-        String payload = """
-        {
-          "body": {
-            "type": "doc",
-            "version": 1,
-            "content": [
-              {
-                "type": "paragraph",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "%s"
-                  }
-                ]
-              }
-            ]
-          }
+        HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Authorization", "Basic " + auth);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setDoOutput(true);
+        String escapedText = commentText
+                .replace("\\", "\\\\")
+                .replace("\"", "\\\"")
+                .replace("\n", "\\n")
+                .replace("\r", "");
+        String payload = String.format(
+                "{ \"body\": { \"type\": \"doc\", \"version\": 1, \"content\": [ { \"type\": \"paragraph\", \"content\": [ { \"type\": \"text\", \"text\": \"%s\" } ] } ] } }",
+                escapedText
+        );
+        try (OutputStream os = conn.getOutputStream()) {
+            byte[] input = payload.getBytes(StandardCharsets.UTF_8);
+            os.write(input);
+            os.flush();
         }
-    """.formatted(commentText.replace("\"", "\\\""));
-        sendPayload(conn, payload);
-        String response = readResponse(conn);
-        //System.out.println("Comment response: " + response);
+        int status = conn.getResponseCode();
+        InputStream responseStream = (status >= 200 && status < 300) ? conn.getInputStream() : conn.getErrorStream();
+        String response = new BufferedReader(new InputStreamReader(responseStream))
+                .lines()
+                .collect(Collectors.joining("\n"));
+        System.out.println("Comment response (" + status + "): ");
     }
+
+
+
 
     private HttpURLConnection createConnection(String apiUrl, String auth) throws IOException {
         HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();

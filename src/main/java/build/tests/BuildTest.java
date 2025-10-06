@@ -41,7 +41,7 @@ public class BuildTest extends BaseTest{
         }
 
         // Fetch all the tasks from Jira
-        String initialJql = "labels NOT IN (WordPress,LocationLanding,LocationPicker,LandingBuild) AND issuetype in (Epic, LandingAG, Redesign) AND status = QA AND assignee not in (membersOF(QA))";
+        String initialJql = "labels NOT IN (WordPress,LocationLanding,LocationPicker,LandingBuild) AND issuetype in (Epic, LandingAG) AND status = QA AND assignee not in (membersOF(QA))";
         List<String> allTasks = buildPage.fetchIssueKeys(email,apiToken,initialJql);
         String suppressionJql = "((status CHANGED TO QA BEFORE -4d) OR (comment ~ \"Build settings done by automation.\")) AND labels NOT IN (WordPress, LocationLanding, LocationPicker, LandingBuild) AND issuetype IN (Epic, LandingAG, Redesign) AND assignee NOT IN (membersOF(QA)) AND status in (QA)";
         List<String> suppressionList = buildPage.fetchIssueKeys(email,apiToken,suppressionJql);
@@ -56,7 +56,7 @@ public class BuildTest extends BaseTest{
             System.out.println(key + " " + spotId + " " + testSiteUrl);
             int spotIdInteger = Integer.parseInt(task.getString("spot_id"));
             JSONObject websiteFieldsJson = buildPage.fetchWebsiteFields(spotIdInteger);
-            String jiraCommentMessage = "Automation test:\n";
+            String jiraCommentMessage = "Build settings done by automation.\n";
             int spotIdInt = Integer.parseInt(spotId);
             if (websiteFieldsJson != null) {
                 boolean is_ada = websiteFieldsJson != null && websiteFieldsJson.has("is_ada")
@@ -117,7 +117,7 @@ public class BuildTest extends BaseTest{
                     int endIndex = testSiteUrl.indexOf(".spotapps.co");
                     String testSiteNumber = testSiteUrl.substring(startIndex, endIndex);
                     buildPage.updateStringField(spotIdInt,"test_site_number",testSiteNumber);
-                    String message = "Test site number has been updated";
+                    String message = "Test site number has been updated: " + testSiteNumber;
                     jiraCommentMessage += message + "\n";
                     System.out.println(message);
                 }
@@ -130,15 +130,16 @@ public class BuildTest extends BaseTest{
                 }
 
                 // Enter comment in Jira
-                buildPage.addCommentToIssue(email,apiToken,key,jiraCommentMessage); // here is the error
+                buildPage.addCommentToIssue(email,apiToken,key,jiraCommentMessage);
 
-                System.out.println("Spot ID: " + spotIdInteger);
+                System.out.println("-------- Spot ID: " + spotIdInteger);
                 System.out.println("is_ada: " + is_ada);
                 System.out.println("is_wcache: " + is_wcache);
                 System.out.println("test_site_number: " + test_site_number);
                 System.out.println("need_website_feedback: " + need_website_feedback);
                 System.out.println("is_real_website: " + is_real_website);
                 System.out.println("is_wcache_test_location: " + is_wcache_test_location);
+                System.out.println(jiraCommentMessage);
 
             } else {
                 System.err.println("No website fields returned for spot " + spotIdInteger);

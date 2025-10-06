@@ -1,0 +1,410 @@
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+Oct 06, 2025 10:52:13 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 140
+Oct 06, 2025 10:52:13 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 140.0.7339.208. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.20.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+issue in (WEB-235794,WEB-235308,WEB-234886,WEB-234885,WEB-234881,WEB-234874,WEB-234872,WEB-234870,WEB-234867,WEB-234866,WEB-234839,WEB-234426,WEB-234423,WEB-234420,WEB-234319,WEB-233929,WEB-233926,WEB-233533,WEB-233523)
+Request URL: https://spothopper.atlassian.net/rest/api/3/search/jql
+WEB-233929 450424 https://spot-sample-450424-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/450424/websites
+is_ada: true
+is_wcache: true
+test_site_number: 450424-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/273373/comment/708014","id":"708014","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:15.584+0200","updated":"2025-10-06T10:52:15.584+0200","jsdPublic":true}
+-------- Spot ID: 450424
+is_ada: true
+is_wcache: true
+test_site_number: 450424-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234839 56180 https://spot-sample-56180-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/56180/websites
+is_ada: true
+is_wcache: true
+test_site_number: 56180-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274500/comment/708015","id":"708015","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:16.146+0200","updated":"2025-10-06T10:52:16.146+0200","jsdPublic":true}
+-------- Spot ID: 56180
+is_ada: true
+is_wcache: true
+test_site_number: 56180-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-233926 172756 http://spot-sample-172756-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/172756/websites
+is_ada: true
+is_wcache: true
+test_site_number: 172756-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/273368/comment/708016","id":"708016","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:16.718+0200","updated":"2025-10-06T10:52:16.718+0200","jsdPublic":true}
+-------- Spot ID: 172756
+is_ada: true
+is_wcache: true
+test_site_number: 172756-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-235308 594364 http://spot-sample-594364-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/594364/websites
+is_ada: true
+is_wcache: true
+test_site_number: 594364-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/275094/comment/708017","id":"708017","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:17.244+0200","updated":"2025-10-06T10:52:17.244+0200","jsdPublic":true}
+-------- Spot ID: 594364
+is_ada: true
+is_wcache: true
+test_site_number: 594364-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234319 580613 http://spot-sample-580613-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/580613/websites
+is_ada: true
+is_wcache: true
+test_site_number: 580613-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/273852/comment/708018","id":"708018","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:17.787+0200","updated":"2025-10-06T10:52:17.787+0200","jsdPublic":true}
+-------- Spot ID: 580613
+is_ada: true
+is_wcache: true
+test_site_number: 580613-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-235794 510279 http://spot-sample-510279-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/510279/websites
+is_ada: true
+is_wcache: true
+test_site_number: 510279-website-v1
+need_website_feedback: Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/275707/comment/708019","id":"708019","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:18.402+0200","updated":"2025-10-06T10:52:18.402+0200","jsdPublic":true}
+-------- Spot ID: 510279
+is_ada: true
+is_wcache: true
+test_site_number: 510279-website-v1
+need_website_feedback: Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234881 613173 http://spot-sample-613173-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/613173/websites
+is_ada: true
+is_wcache: true
+test_site_number: 613173-website-v0
+need_website_feedback: Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274552/comment/708020","id":"708020","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:18.962+0200","updated":"2025-10-06T10:52:18.962+0200","jsdPublic":true}
+-------- Spot ID: 613173
+is_ada: true
+is_wcache: true
+test_site_number: 613173-website-v0
+need_website_feedback: Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234870 557914 http://spot-sample-557914-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/557914/websites
+is_ada: false
+is_wcache: false
+test_site_number: null
+need_website_feedback: null
+is_real_website: false
+is_wcache_test_location: false
+Response Code: 200
+Spot 557914 updated: is_ada = true
+ADA checkbox has been set to true
+Response Code: 200
+Spot 557914 updated: is_real_website = true
+Real Website has been set to true
+Response Code: 200
+Spot 557914 updated: is_wcache = true
+Wcache checkbox has been set to true
+Response Code: 200
+Spot 557914 updated: is_wcache_test_location = true
+Wcache test location checkbox has been set to true
+Field "test_site_number" updated successfully for spot 557914
+Test site number has been updated
+websiteInProgress() triggered successfully: 
+Start Build button clicked
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\nADA checkbox has been set to true\nReal Website has been set to true\nWcache checkbox has been set to true\nWcache test location checkbox has been set to true\nTest site number has been updated\nStart Build button clicked\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274539/comment/708021","id":"708021","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\nADA checkbox has been set to true\nReal Website has been set to true\nWcache checkbox has been set to true\nWcache test location checkbox has been set to true\nTest site number has been updated\nStart Build button clicked\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:24.158+0200","updated":"2025-10-06T10:52:24.158+0200","jsdPublic":true}
+-------- Spot ID: 557914
+is_ada: false
+is_wcache: false
+test_site_number: null
+need_website_feedback: null
+is_real_website: false
+is_wcache_test_location: false
+Automation test:
+ADA checkbox has been set to true
+Real Website has been set to true
+Wcache checkbox has been set to true
+Wcache test location checkbox has been set to true
+Test site number has been updated
+Start Build button clicked
+
+WEB-234866 546744 https://spot-sample-546744-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/546744/websites
+is_ada: true
+is_wcache: true
+test_site_number: 546744-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274534/comment/708022","id":"708022","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:24.644+0200","updated":"2025-10-06T10:52:24.644+0200","jsdPublic":true}
+-------- Spot ID: 546744
+is_ada: true
+is_wcache: true
+test_site_number: 546744-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234426 455731 https://spot-sample-455731-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/455731/websites
+is_ada: true
+is_wcache: true
+test_site_number: 455731-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274008/comment/708023","id":"708023","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:25.171+0200","updated":"2025-10-06T10:52:25.171+0200","jsdPublic":true}
+-------- Spot ID: 455731
+is_ada: true
+is_wcache: true
+test_site_number: 455731-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234867 542394 http://spot-sample-542394-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/542394/websites
+is_ada: true
+is_wcache: true
+test_site_number: 542394-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274535/comment/708024","id":"708024","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:25.709+0200","updated":"2025-10-06T10:52:25.709+0200","jsdPublic":true}
+-------- Spot ID: 542394
+is_ada: true
+is_wcache: true
+test_site_number: 542394-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234886 489268 http://spot-sample-489268-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/489268/websites
+is_ada: true
+is_wcache: true
+test_site_number: 489268-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274558/comment/708025","id":"708025","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:26.266+0200","updated":"2025-10-06T10:52:26.266+0200","jsdPublic":true}
+-------- Spot ID: 489268
+is_ada: true
+is_wcache: true
+test_site_number: 489268-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-233533 277798 https://spot-sample-277798-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/277798/websites
+is_ada: true
+is_wcache: true
+test_site_number: 277798-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/272752/comment/708026","id":"708026","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:26.773+0200","updated":"2025-10-06T10:52:26.773+0200","jsdPublic":true}
+-------- Spot ID: 277798
+is_ada: true
+is_wcache: true
+test_site_number: 277798-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-233523 600534 http://spot-sample-600534-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/600534/websites
+is_ada: true
+is_wcache: true
+test_site_number: 600534-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/272741/comment/708027","id":"708027","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:27.299+0200","updated":"2025-10-06T10:52:27.299+0200","jsdPublic":true}
+-------- Spot ID: 600534
+is_ada: true
+is_wcache: true
+test_site_number: 600534-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234885 622479 http://spot-sample-622479-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/622479/websites
+is_ada: true
+is_wcache: true
+test_site_number: 622479-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274557/comment/708028","id":"708028","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:27.852+0200","updated":"2025-10-06T10:52:27.852+0200","jsdPublic":true}
+-------- Spot ID: 622479
+is_ada: true
+is_wcache: true
+test_site_number: 622479-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234874 603834 http://spot-sample-603834-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/603834/websites
+is_ada: true
+is_wcache: true
+test_site_number: 603834-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274543/comment/708029","id":"708029","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:28.410+0200","updated":"2025-10-06T10:52:28.410+0200","jsdPublic":true}
+-------- Spot ID: 603834
+is_ada: true
+is_wcache: true
+test_site_number: 603834-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234423 423296 http://spot-sample-423296-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/423296/websites
+is_ada: true
+is_wcache: true
+test_site_number: 423296-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274005/comment/708030","id":"708030","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:29.004+0200","updated":"2025-10-06T10:52:29.004+0200","jsdPublic":true}
+-------- Spot ID: 423296
+is_ada: true
+is_wcache: true
+test_site_number: 423296-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234420 610798 https://spot-sample-610798-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/610798/websites
+is_ada: true
+is_wcache: true
+test_site_number: 610798-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274000/comment/708031","id":"708031","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:29.565+0200","updated":"2025-10-06T10:52:29.565+0200","jsdPublic":true}
+-------- Spot ID: 610798
+is_ada: true
+is_wcache: true
+test_site_number: 610798-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
+
+WEB-234872 117133 https://spot-sample-117133-website-v1.spotapps.co
+urlStr: https://www.spothopperapp.com/api/spots/117133/websites
+is_ada: true
+is_wcache: true
+test_site_number: 117133-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Payload:
+{ "body": { "type": "doc", "version": 1, "content": [ { "type": "paragraph", "content": [ { "type": "text", "text": "Automation test:\n" } ] } ] } }
+Comment response (201): {"self":"https://spothopper.atlassian.net/rest/api/3/issue/274541/comment/708032","id":"708032","author":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"body":{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"Automation test:\n"}]}]},"updateAuthor":{"self":"https://spothopper.atlassian.net/rest/api/3/user?accountId=712020%3A69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","accountId":"712020:69cf402b-10fe-4e34-ab9c-4dc4351f2ba7","emailAddress":"vanja.mojsilovic@spothopperapp.com","avatarUrls":{"48x48":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","24x24":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","16x16":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png","32x32":"https://secure.gravatar.com/avatar/abb74d5da5fb2973d8e36d0ee8e23185?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVM-4.png"},"displayName":"Vanja Mojsilovic","active":true,"timeZone":"Europe/Belgrade","accountType":"atlassian"},"created":"2025-10-06T10:52:30.093+0200","updated":"2025-10-06T10:52:30.093+0200","jsdPublic":true}
+-------- Spot ID: 117133
+is_ada: true
+is_wcache: true
+test_site_number: 117133-website-v1
+need_website_feedback: Don't Need It
+is_real_website: true
+is_wcache_test_location: true
+Automation test:
