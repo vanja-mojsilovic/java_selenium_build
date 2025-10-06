@@ -80,11 +80,6 @@ public class BuildTest extends BaseTest{
                         ? websiteFieldsJson.isNull("need_website_feedback") ? null : websiteFieldsJson.optString("need_website_feedback", null)
                         : null;
 
-
-
-
-
-
                 if(!is_ada){
                     buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
                     String message = "ADA checkbox has been set to true";
@@ -128,6 +123,11 @@ public class BuildTest extends BaseTest{
                     jiraCommentMessage += message + "\n";
                     System.out.println(message);
                 }
+
+                buildPage.wcacheInvalidation(testSiteUrl);
+                String message = "Wcache invalidated.";
+                jiraCommentMessage += message + "\n";
+                System.out.println(message);
 
                 // Enter comment in Jira
                 buildPage.addCommentToIssue(email,apiToken,key,jiraCommentMessage);

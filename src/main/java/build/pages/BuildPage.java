@@ -572,6 +572,27 @@ public class BuildPage extends AbstractClass{
         }
     }
 
+    public void wcacheInvalidation(String testSiteUrl) {
+        try {
+            int startIndex = testSiteUrl.indexOf("https://") + "https://spot-sample-".length();
+            int endIndex = testSiteUrl.length();
+            String testSiteDomain = testSiteUrl.substring(startIndex, endIndex);
+            String wcacheUrl = "https://wcache.spotapps.co/?domain=" + testSiteDomain + "/&clear_cache=yes";
+            HttpURLConnection conn = (HttpURLConnection) new URL(wcacheUrl).openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "*/*");
+            int status = conn.getResponseCode();
+            System.out.println("Cache invalidation response (" + status + "): " +
+                    new BufferedReader(new InputStreamReader(conn.getInputStream()))
+                            .lines()
+                            .collect(Collectors.joining("\n")));
+        } catch (Exception e) {
+            System.err.println("Cache invalidation failed: " + e.getMessage());
+            e.printStackTrace(); // optional for debugging
+        }
+    }
+
+
 
 }
 
