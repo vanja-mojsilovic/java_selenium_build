@@ -86,54 +86,69 @@ public class BuildTest extends BaseTest{
                         : null;
 
                 if(!is_ada){
-                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
-                    // if response code ...
-                    String message = "ADA checkbox has been set to true";
-                    jiraCommentMessage += message + "\n";
-                    System.out.println(message);
+                    boolean changeSuccess = buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
+                    if(changeSuccess){
+                        String message = "ADA checkbox has been set to true";
+                        jiraCommentMessage += message + "\n";
+                        System.out.println(message);
+                    }
+
 
                 }
                 if(!is_real_website){
-                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_real_website",true);
-                    String message = "Real Website has been set to true";
-                    jiraCommentMessage += message + "\n";
-                    System.out.println(message);
+                    boolean changeSuccess = buildPage.updateWebsiteBooleanField(spotIdInteger,"is_real_website",true);
+                    if(changeSuccess){
+                        String message = "Real Website has been set to true";
+                        jiraCommentMessage += message + "\n";
+                        System.out.println(message);
+                    }
                 }
 
                 if(!is_wcache){
-                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache",true);
-                    String message = "Wcache checkbox has been set to true";
-                    jiraCommentMessage += message + "\n";
-                    System.out.println(message);
+                    boolean changeSuccess = buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache",true);
+                    if(changeSuccess){
+                        String message = "Wcache checkbox has been set to true";
+                        jiraCommentMessage += message + "\n";
+                        System.out.println(message);
+                    }
                 }
                 if(!is_wcache_test_location){
-                    buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache_test_location",true);
-                    String message = "Wcache test location checkbox has been set to true";
-                    jiraCommentMessage += message + "\n";
-                    System.out.println(message);
+                    boolean changeSuccess = buildPage.updateWebsiteBooleanField(spotIdInteger,"is_wcache_test_location",true);
+                    if(changeSuccess){
+                        String message = "Wcache test location checkbox has been set to true";
+                        jiraCommentMessage += message + "\n";
+                        System.out.println(message);
+                    }
                 }
 
                 if(test_site_number == null || test_site_number.isEmpty()){
                     int startIndex = testSiteUrl.indexOf("https://spot-sample-") + "https://spot-sample-".length();
                     int endIndex = testSiteUrl.indexOf(".spotapps.co");
                     String testSiteNumber = testSiteUrl.substring(startIndex, endIndex);
-                    buildPage.updateStringField(spotIdInt,"test_site_number",testSiteNumber);
-                    String message = "Test site number has been updated: " + testSiteNumber;
-                    jiraCommentMessage += message + "\n";
-                    System.out.println(message);
+                    boolean changeSuccess = buildPage.updateStringField(spotIdInt,"test_site_number",testSiteNumber);
+                    if(changeSuccess){
+                        String message = "Test site number has been updated: " + testSiteNumber;
+                        jiraCommentMessage += message + "\n";
+                        System.out.println(message);
+                    }
                 }
 
                 if(need_website_feedback == null || need_website_feedback.isEmpty()){
-                    buildPage.updateFieldAndTriggerBuild(spotIdInt,"need_website_feedback","Don't Need It");
-                    String message = "Start Build button clicked";
+                    boolean changeSuccess = buildPage.updateFieldAndTriggerBuild(spotIdInt,"need_website_feedback","Don't Need It");
+                    if(changeSuccess){
+                        String message = "Start Build button clicked";
+                        jiraCommentMessage += message + "\n";
+                        System.out.println(message);
+                    }
+                }
+
+                boolean invalidationSuccess = buildPage.wcacheInvalidation(testSiteUrl);
+                if(invalidationSuccess){
+                    String message = "Wcache invalidated.";
                     jiraCommentMessage += message + "\n";
                     System.out.println(message);
                 }
 
-                buildPage.wcacheInvalidation(testSiteUrl);
-                String message = "Wcache invalidated.";
-                jiraCommentMessage += message + "\n";
-                System.out.println(message);
 
                 // Enter comment in Jira
                 buildPage.addCommentToIssue(email,apiToken,key,jiraCommentMessage);

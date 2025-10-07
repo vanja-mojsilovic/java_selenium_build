@@ -388,7 +388,7 @@ public class BuildPage extends AbstractClass{
         String cookie = getSpothopperCookie();
         if (cookie == null) {
             System.err.println("No cookie available — cannot proceed.");
-            return;
+            return false;
         }
         try {
             String apiUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";
@@ -426,7 +426,8 @@ public class BuildPage extends AbstractClass{
         }
     }
 
-    public void updateFieldAndTriggerBuild(int spotId, String fieldName, String fieldValue) {
+    public boolean updateFieldAndTriggerBuild(int spotId, String fieldName, String fieldValue) {
+        boolean result = false;
         String cookie = getSpothopperCookie();
         if (cookie == null || cookie.isEmpty()) {
             System.err.println("No cookie available — cannot proceed.");
@@ -448,11 +449,12 @@ public class BuildPage extends AbstractClass{
             if (updateResponse >= 200 && updateResponse < 300) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(updateCon.getInputStream(), StandardCharsets.UTF_8))) {
                     String response = reader.lines().collect(Collectors.joining("\n"));
-                    //System.out.println("Field updated successfully: " + response);
+                    System.out.println("Field updated successfully: " + updateResponse);
+                    result = true;
                 }
             } else {
                 System.err.println("Failed to update field. Skipping trigger.");
-                return;
+                return false;
             }
             String triggerUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites/website_in_progress";
             HttpURLConnection triggerCon = (HttpURLConnection) new URL(triggerUrl).openConnection();
@@ -465,11 +467,12 @@ public class BuildPage extends AbstractClass{
                 os.write(triggerPayload.getBytes(StandardCharsets.UTF_8));
             }
             int triggerResponse = triggerCon.getResponseCode();
-            //System.out.println("Trigger response: " + triggerResponse);
+            System.out.println("Trigger response: " + triggerResponse);
             if (triggerResponse >= 200 && triggerResponse < 300) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(triggerCon.getInputStream(), StandardCharsets.UTF_8))) {
                     String response = reader.lines().collect(Collectors.joining("\n"));
                     System.out.println("websiteInProgress() triggered successfully: ");
+                    result = true;
                 }
             } else {
                 try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(triggerCon.getErrorStream(), StandardCharsets.UTF_8))) {
@@ -477,17 +480,20 @@ public class BuildPage extends AbstractClass{
                     System.err.println("Trigger failed: " + triggerResponse + " - " + errorResponse);
                 }
             }
+            return result;
         } catch (IOException e) {
             System.err.println("Exception during update and trigger: " + e.getMessage());
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void updateStringField(int spotId, String fieldName, String fieldValue) {
+    public boolean updateStringField(int spotId, String fieldName, String fieldValue) {
+        boolean result = false;
         String cookie = getSpothopperCookie();
         if (cookie == null || cookie.isEmpty()) {
             System.err.println("No cookie available — cannot proceed.");
-            return;
+            return false;
         }
         try {
             String updateUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";
@@ -506,13 +512,16 @@ public class BuildPage extends AbstractClass{
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(updateCon.getInputStream(), StandardCharsets.UTF_8))) {
                     String response = reader.lines().collect(Collectors.joining("\n"));
                     System.out.println("Field \"" + fieldName + "\" updated successfully for spot " + spotId);
+                    result = true;
                 }
             } else {
                 System.err.println("Failed to update field \"" + fieldName + "\" for spot " + spotId + ". Response code: " + updateResponse);
             }
+            return result;
         } catch (IOException e) {
             System.err.println("Exception during field update: " + e.getMessage());
             e.printStackTrace();
+            return result;
         }
     }
 
@@ -577,7 +586,8 @@ public class BuildPage extends AbstractClass{
         }
     }
 
-    public void wcacheInvalidation(String testSiteUrl) {
+    public boolean wcacheInvalidation(String testSiteUrl) {
+        boolean result=false;
         try {
             int startIndex = testSiteUrl.indexOf("https://") + "https://spot-sample-".length();
             int endIndex = testSiteUrl.length();
@@ -591,9 +601,14 @@ public class BuildPage extends AbstractClass{
                     new BufferedReader(new InputStreamReader(conn.getInputStream()))
                             .lines()
                             .collect(Collectors.joining("\n")));
+            if (status >= 200 && status < 300){
+                result = true;
+            }
+            return result;
         } catch (Exception e) {
             System.err.println("Cache invalidation failed: " + e.getMessage());
-            e.printStackTrace(); // optional for debugging
+            e.printStackTrace();
+            return false;
         }
     }
 
