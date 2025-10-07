@@ -383,7 +383,8 @@ public class BuildPage extends AbstractClass{
         return cookie;
     }
 
-    public void updateWebsiteBooleanField(int spotId, String fieldName, boolean newValue) {
+    public boolean updateWebsiteBooleanField(int spotId, String fieldName, boolean newValue) {
+        boolean result = false;
         String cookie = getSpothopperCookie();
         if (cookie == null) {
             System.err.println("No cookie available — cannot proceed.");
@@ -407,17 +408,21 @@ public class BuildPage extends AbstractClass{
             if (responseCode >= 200 && responseCode < 300) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8))) {
                     String response = reader.lines().collect(Collectors.joining("\n"));
+                    result = true;
                     System.out.println("Spot " + spotId + " updated: " + fieldName + " = " + newValue);
                 }
             } else {
                 try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream(), StandardCharsets.UTF_8))) {
                     String errorResponse = errorReader.lines().collect(Collectors.joining("\n"));
                     System.err.println("Failed to update spot " + spotId + ": " + responseCode + " - " + errorResponse);
+
                 }
             }
+            return result;
         } catch (IOException e) {
             System.err.println("Exception while updating spot " + spotId + ": " + e.getMessage());
             e.printStackTrace();
+            return result;
         }
     }
 
@@ -425,7 +430,7 @@ public class BuildPage extends AbstractClass{
         String cookie = getSpothopperCookie();
         if (cookie == null || cookie.isEmpty()) {
             System.err.println("No cookie available — cannot proceed.");
-            return;
+            return false;
         }
         try {
             String updateUrl = "https://www.spothopperapp.com/api/spots/" + spotId + "/websites";

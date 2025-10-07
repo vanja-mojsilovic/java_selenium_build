@@ -3,7 +3,7 @@ name: Run Build Test
 on:
   schedule:
     - cron: '30 5 * * *'  # 07:30 CET
-    - cron: '00 11 * * *' # 12:00 CET
+    - cron: '00 10 * * *' # 12:00 CET
   workflow_dispatch:
 
 jobs:

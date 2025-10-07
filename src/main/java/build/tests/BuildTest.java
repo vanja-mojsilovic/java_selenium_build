@@ -87,6 +87,7 @@ public class BuildTest extends BaseTest{
 
                 if(!is_ada){
                     buildPage.updateWebsiteBooleanField(spotIdInteger,"is_ada",true);
+                    // if response code ...
                     String message = "ADA checkbox has been set to true";
                     jiraCommentMessage += message + "\n";
                     System.out.println(message);
