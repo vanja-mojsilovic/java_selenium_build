@@ -141,7 +141,7 @@ public class BuildPage extends AbstractClass{
     public void changeCityOnApp() {
         try {
             Dotenv dotenv = Dotenv.configure()
-                    .directory(System.getProperty("user.dir")) // ensures correct path
+                    .directory(System.getProperty("user.dir"))
                     .ignoreIfMalformed()
                     .ignoreIfMissing()
                     .load();
@@ -192,20 +192,16 @@ public class BuildPage extends AbstractClass{
          "fields": ["key"]
        }
     """, jql.replace("\"", "\\\""));
-
         String auth = Base64.getEncoder().encodeToString((email + ":" + apiToken).getBytes(StandardCharsets.UTF_8));
-
         HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Authorization", "Basic " + auth);
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setRequestProperty("Accept", "application/json");
         conn.setDoOutput(true);
-
         try (OutputStream os = conn.getOutputStream()) {
             os.write(jqlPayload.getBytes(StandardCharsets.UTF_8));
         }
-
         String response;
         int status = conn.getResponseCode();
         if (status >= 200 && status < 300) {
@@ -610,6 +606,22 @@ public class BuildPage extends AbstractClass{
             e.printStackTrace();
             return false;
         }
+    }
+
+    public String extractSpotIdFromUrl(String testSiteUrl){
+        String result = "";
+        String prefix = "sample-";
+        int startIndex = testSiteUrl.indexOf(prefix);
+        if (startIndex == -1) {
+            return result;
+        }
+        startIndex += prefix.length();
+        int endIndex = testSiteUrl.indexOf("-", startIndex);
+        if (endIndex == -1) {
+            return result;
+        }
+        result = testSiteUrl.substring(startIndex, endIndex);
+        return result;
     }
 
 
