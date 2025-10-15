@@ -5,6 +5,7 @@ Scenario
             AND issuetype in (Epic, LandingAG)
             AND status = QA
             AND assignee not in (membersOF(QA))";
+    Ensure to avoid process the tasks which already have a comment "Build settings done by automation."
     Providing data
         Spot ID
         Test website URL
