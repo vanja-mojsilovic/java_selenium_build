@@ -62,7 +62,7 @@ public class BuildTest extends BaseTest{
             System.out.println("spotId from Jira: " + spotId + " spotIdFromUrl: " + spotIdFromUrl);
             String jiraCommentMessage = "Build settings done by automation.\n";
             if(!spotId.equals(spotIdFromUrl)) {
-                jiraCommentMessage = "Spot ID in Jira task and in test website URL do not match! Build settings done by automation.";
+                jiraCommentMessage = "NOTE FOR QA: Spot ID in Jira task and in test website URL do not match! Build settings done by automation.";
                 buildPage.addCommentToIssue(email,apiToken,key,jiraCommentMessage);
                 continue;
             }
